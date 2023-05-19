@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./bootstrap-5.3.0-alpha1-dist/js/bootstrap.js">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+<style>
+    body{background:linear-gradient(125deg, #FB8E6A, #451E61); 
+    background-repeat: no-repeat}
+    #Cart:hover{
+        color: #fff;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    #contain{
+        border: 2px solid green !important;
+        border-radius: 10px 40px 10px 40px !important;
+    }
+    
+</style>
+<body onload="displayCart()">
+    <div id="contain" class="container border border-3 border-info round-3 mt-5">
+    <h1><marquee class="trans" behavior="" direction="">Welcome to Java Ventures 🛒</marquee></h1> <hr>
+    <h2 class="animate__animated animate__bounceInRight">Kindly add your preferred item(s) to cart</h2>
+    <input type="text" placeholder="Add an Item" class="form-control my-2" id="user">
+    <input type="text" placeholder="Add a price" class="form-control my-2" id="user2">
+    <input type="text" placeholder="Add the available Quantity" class="form-control my-2" id="user3">
+    <button id="Cart" class="btn btn-warning w-100 " onclick="addToCart()">Add to Cart</button>
+    <hr>
+    <table class="table table-striped" id="myTable">
+        <tr>
+            <td>S/N</td>
+            <td>Items</td>
+            <td>Actions</td>
+            <td>Price</td>
+            <td>Qty</td>
+        </tr>
+    </table>
+</div>
+    <!-- <div id="disp"></div> -->
+    <script>
+
+        var cart = []
+        var cart2 = []
+        var cart3 = []
+        function addToCart(){
+            if(user.value == ""){
+                alert("Kindly add an item")
+            }else{
+            cart.push(user.value)
+            cart2.push(user2.value)
+            cart3.push(user3.value)
+            user.value = ""
+            displayCart()
+            console.log(cart)
+            }
+        }
+       
+        
+        function displayCart(){
+            myTable.innerHTML = `<tr>
+            <td><h3>S/N</h3></td>
+            <td><h3>Items</h3></td>
+            <td><h3>Actions</h3></td>
+            <td><h3>Price</h3></td>
+            <td><h3>Qty</h3></td>
+        </tr>`
+            // alert("izz working")
+            for (let index = 0; index < cart.length; index++) {
+                // console.log(index)
+                console.log(cart[index])
+                myTable.innerHTML += `
+                <tr>
+                    <td>${index +1}</td>
+                    <td>${cart[index]}</td>
+                    <td>
+                        <button class="btn btn-danger" onClick="deleteItem(${index})">Delete</button>
+                        <button class="btn btn-primary "onClick="editItem(${index})">Edit</button> 
+                    </td>
+                    <td><h3>${cart2[index]}</h3></td>
+                     <td><h3>${cart3[index]}</h3></td>
+                </tr>
+                `
+                
+                
+            }
+        }
+        function deleteItem(userIndex){
+            cart.splice(user, 1)
+            displayCart()
+            console.log(cart)
+    }
+    function editItem(userIndex){
+      var replacement =  prompt("Type the item you want to Edit")
+        // alert("working")
+        cart.splice(user,1, replacement)
+        displayCart()
+        console.log(cart)
+    }
+    </script>
+    
+</body>
+</html>
