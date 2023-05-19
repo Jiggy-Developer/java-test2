@@ -13,10 +13,10 @@
   />
 </head>
 <style>
-    body{background:linear-gradient(125deg, #FB8E6A, #451E61); 
+    body{background:linear-gradient(125deg, #FDE7EA, #FFC2C2); 
     background-repeat: no-repeat}
     #Cart:hover{
-        color: #fff;
+        color: #FB8E6A;
         font-weight: bold;
         font-size: 20px;
     }
@@ -51,10 +51,7 @@
         let cart = []
         let cart2 = []
         let cart3 = []
-        if(localStorage.myCart){
-            cart= JSON.parse(localStorage.getItem("myCart"))
-            console.log(cart)
-        }
+       
         function addToCart(){
             if(user.value == ""){
                 alert("Kindly add an item")
