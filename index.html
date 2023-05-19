@@ -48,9 +48,13 @@
     <!-- <div id="disp"></div> -->
     <script>
 
-        var cart = []
-        var cart2 = []
-        var cart3 = []
+        let cart = []
+        let cart2 = []
+        let cart3 = []
+        if(localStorage.myCart){
+            cart= JSON.parse(localStorage.getItem("myCart"))
+            console.log(cart)
+        }
         function addToCart(){
             if(user.value == ""){
                 alert("Kindly add an item")
@@ -62,6 +66,8 @@
             displayCart()
             console.log(cart)
             }
+            localStorage.setItem("myCart", JSON.stringify(cart))
+            console.log(cart)
         }
        
         
